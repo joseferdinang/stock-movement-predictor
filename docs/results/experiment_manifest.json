@@ -1,0 +1,78 @@
+{
+  "start_inclusive": "2010-01-01",
+  "end_exclusive": "2026-11-11",
+  "holdout_rows": 504,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "gap": 1,
+  "seed": 42,
+  "fee_per_side": 0.001,
+  "versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.2.0",
+    "yfinance": "1.8.0",
+    "matplotlib": "3.11.2"
+  },
+  "raw_metadata": {
+    "SPY": {
+      "parameters": {
+        "ticker": "SPY",
+        "start": "2010-01-01",
+        "end": "2026-11-11",
+        "interval": "1d",
+        "auto_adjust": true
+      },
+      "downloaded_at_utc": "2026-11-11T18:48:50.314665+00:00",
+      "sha256": "3afbe56bc2b6ca2d4b66419ad483ddaadaa0112893ad0b16480c0a57dc309360",
+      "rows": 4240,
+      "first_session": "2010-01-04",
+      "last_session": "2026-11-10",
+      "yfinance_version": "1.8.0",
+      "source": "https://finance.yahoo.com/",
+      "point_in_time": false
+    },
+    "AAPL": {
+      "parameters": {
+        "ticker": "AAPL",
+        "start": "2010-01-01",
+        "end": "2026-11-11",
+        "interval": "1d",
+        "auto_adjust": true
+      },
+      "downloaded_at_utc": "2026-11-11T18:48:51.355186+00:00",
+      "sha256": "91d06bc150f968febbb1eddbb554de90ebe31442f7c565ad7f780b7f3f128a67",
+      "rows": 4240,
+      "first_session": "2010-01-04",
+      "last_session": "2026-11-10",
+      "yfinance_version": "1.8.0",
+      "source": "https://finance.yahoo.com/",
+      "point_in_time": false
+    },
+    "MSFT": {
+      "parameters": {
+        "ticker": "MSFT",
+        "start": "2010-01-01",
+        "end": "2026-11-11",
+        "interval": "1d",
+        "auto_adjust": true
+      },
+      "downloaded_at_utc": "2026-11-11T18:48:52.161612+00:00",
+      "sha256": "0609fc7369b31bc9f03437b43cc459ecd008aaa894bf79426c26a9a9c5951157",
+      "rows": 4240,
+      "first_session": "2010-01-04",
+      "last_session": "2026-11-10",
+      "yfinance_version": "1.8.0",
+      "source": "https://finance.yahoo.com/",
+      "point_in_time": false
+    }
+  },
+  "selected_models": {
+    "SPY": "logistic",
+    "AAPL": "random_forest",
+    "MSFT": "xgboost"
+  },
+  "notebook_assertions_passed": true
+}

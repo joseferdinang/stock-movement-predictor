@@ -1,6 +1,17 @@
 # Stock Movement Predictor
 
+[![Tests](https://github.com/joseferdinang/stock-movement-predictor/actions/workflows/tests.yml/badge.svg)](https://github.com/joseferdinang/stock-movement-predictor/actions/workflows/tests.yml)
+![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
+
 Evaluación honesta de clasificación binaria de la dirección del cierre de mañana. Honest next-session direction classification. Python 3.11, SPY / AAPL / MSFT, sin interfaz web ni trading en vivo.
+
+**Para revisores / For reviewers:** [Notebook ejecutado / Executed notebook](notebooks/results.ipynb) · [Resultados CSV / Results](docs/results/) · [English](#english) · [Resumen para portafolio / Portfolio summary](PORTFOLIO.md).
+
+![Test final de 504 sesiones: AUC de los modelos elegidos frente a 0,50 y retorno neto frente a buy and hold, con comisión del 0,1 por ciento por lado.](docs/portfolio-preview.png)
+
+El test final muestra mejoras pequeñas en AAPL y MSFT y un resultado negativo en SPY. Solo MSFT supera buy and hold después de costos; no se demuestra una ventaja estable.
+
+The final test shows small classification improvements for AAPL and MSFT and a negative result for SPY. Only MSFT beats buy and hold after costs; a robust edge is not established.
 
 ## Español
 
@@ -123,7 +134,9 @@ Comparaciones por etapa sobre fechas idénticas. El test tiene 504 predicciones,
 
 **41 pruebas aprobadas**: descarga simulada y caché; OHLCV inválido; rezagos, target, RSI y extremos; invariancia de prefijos al truncar y alterar el futuro; límites de etiquetas; aislamiento del test final; filas usadas realmente para ajustar el escalador; costos y ejecución manuales; integración de las tres familias sin red. Los datos artificiales solo se usan en tests.
 
-`data/processed/` se regenera con predicciones individuales, métricas, particiones internas/externas, parámetros, auditorías, curvas y `experiment_manifest.json` con versiones y hashes. Datos descargados, resultados regenerables y entornos se excluyen de Git; las salidas ejecutadas del notebook y este README sí se versionan. Los commits locales tienen autor técnico `Codex <codex@localhost>`; no se modificó la identidad global de Git ni se publicó en GitHub.
+`data/processed/` se regenera con predicciones individuales, métricas, particiones internas/externas, parámetros, auditorías, curvas y `experiment_manifest.json` con versiones y hashes. Datos descargados, resultados regenerables y entornos se excluyen de Git; las salidas ejecutadas del notebook y este README sí se versionan. [docs/results/](docs/results/) conserva una instantánea pública de métricas, auditorías y metadatos de la ejecución documentada; no se utiliza como entrada para entrenar ni evaluar. El historial conserva los commits de implementación con autor técnico `Codex <codex@localhost>`.
+
+GitHub Actions ejecuta las 41 pruebas sin descargar cotizaciones y valida el notebook guardado en Python 3.11 sobre Linux y Windows. No reentrena el experimento ni modifica el test final. El estado de cada ejecución se consulta en [Actions](https://github.com/joseferdinang/stock-movement-predictor/actions).
 
 ```text
 data/raw/          CSV y metadatos de descarga (caché local)
@@ -135,6 +148,8 @@ src/backtest.py    Ejecución próxima apertura y costos
 tests/             Pruebas unitarias e integración
 notebooks/         results.ipynb ejecutado
 requirements.txt   Versiones verificadas; Python 3.11
+docs/              Vista previa y métricas publicadas de esta instantánea
+.github/workflows/ Pruebas automáticas en Linux y Windows
 ```
 
 ### Limitaciones
@@ -166,3 +181,5 @@ Signals execute at the **next open** and earn returns until the following open; 
 Historical adjustments and revisions mean these data are not genuinely point-in-time. Prefix tests verify code causality on a frozen snapshot, not historical data availability. Asset selection/survivorship, serial dependence, regime changes, finite samples and model-selection optimism remain. No confidence intervals or significance tests are claimed. Spread, slippage, market impact, taxes, cash yield and execution constraints are omitted. Adjusted opening prices and a fixed fee are research assumptions. These results do not establish future profitability or live-trading readiness.
 
 **Validation:** 41 passing tests, including all three classifier families, final-test isolation, scaler-fit boundaries and manually checked transaction costs. The notebook was executed top-to-bottom; raw hashes, versions, predictions, split manifests and audits are saved locally under `data/processed/`. No web UI, deployment, neural networks, news data or live trading are included.
+
+The [published result snapshot](docs/results/) contains readable CSV metrics, audits and source hashes for the documented run, without redistributing raw quotes. It is not used as training or evaluation input. GitHub Actions runs the offline test suite and validates the saved notebook on Python 3.11, Linux and Windows; it does not download market data or retune the experiment.

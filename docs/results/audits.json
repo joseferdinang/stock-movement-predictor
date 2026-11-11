@@ -1,0 +1,107 @@
+{
+  "SPY": {
+    "temporal_boundaries_passed": true,
+    "threshold": 0.5,
+    "random_state": 42,
+    "holdout_rows": 504,
+    "purged_date": "2024-11-04",
+    "accuracy_above_60": [],
+    "audit_required": false,
+    "audit_status": "completed_fixed_snapshot_checks",
+    "single_class_evaluations": [],
+    "interpretation": "Los umbrales son metas, nunca instrucciones para modificar el test.",
+    "feature_causality": {
+      "passed": true,
+      "checked_cutoffs": [
+        "2010-03-16",
+        "2011-09-15",
+        "2013-03-25",
+        "2014-09-26",
+        "2016-04-04",
+        "2017-10-05",
+        "2019-04-11",
+        "2020-10-14",
+        "2022-04-20",
+        "2023-10-25",
+        "2025-05-05",
+        "2026-11-09"
+      ],
+      "scope": "Causalidad del cálculo sobre un CSV fijo; no certifica datos point-in-time."
+    },
+    "target_alignment_passed": true,
+    "prediction_alignment_passed": true,
+    "constant_baseline_auc_passed": true,
+    "point_in_time_data_guarantee": false,
+    "low_walk_forward_accuracy": false
+  },
+  "AAPL": {
+    "temporal_boundaries_passed": true,
+    "threshold": 0.5,
+    "random_state": 42,
+    "holdout_rows": 504,
+    "purged_date": "2024-11-04",
+    "accuracy_above_60": [],
+    "audit_required": false,
+    "audit_status": "completed_fixed_snapshot_checks",
+    "single_class_evaluations": [],
+    "interpretation": "Los umbrales son metas, nunca instrucciones para modificar el test.",
+    "feature_causality": {
+      "passed": true,
+      "checked_cutoffs": [
+        "2010-03-16",
+        "2011-09-15",
+        "2013-03-25",
+        "2014-09-26",
+        "2016-04-04",
+        "2017-10-05",
+        "2019-04-11",
+        "2020-10-14",
+        "2022-04-20",
+        "2023-10-25",
+        "2025-05-05",
+        "2026-11-09"
+      ],
+      "scope": "Causalidad del cálculo sobre un CSV fijo; no certifica datos point-in-time."
+    },
+    "target_alignment_passed": true,
+    "prediction_alignment_passed": true,
+    "constant_baseline_auc_passed": true,
+    "point_in_time_data_guarantee": false,
+    "low_walk_forward_accuracy": false
+  },
+  "MSFT": {
+    "temporal_boundaries_passed": true,
+    "threshold": 0.5,
+    "random_state": 42,
+    "holdout_rows": 504,
+    "purged_date": "2024-11-04",
+    "accuracy_above_60": [],
+    "audit_required": false,
+    "audit_status": "completed_fixed_snapshot_checks",
+    "single_class_evaluations": [],
+    "interpretation": "Los umbrales son metas, nunca instrucciones para modificar el test.",
+    "feature_causality": {
+      "passed": true,
+      "checked_cutoffs": [
+        "2010-03-16",
+        "2011-09-15",
+        "2013-03-25",
+        "2014-09-26",
+        "2016-04-04",
+        "2017-10-05",
+        "2019-04-11",
+        "2020-10-14",
+        "2022-04-20",
+        "2023-10-25",
+        "2025-05-05",
+        "2026-11-09"
+      ],
+      "scope": "Causalidad del cálculo sobre un CSV fijo; no certifica datos point-in-time."
+    },
+    "target_alignment_passed": true,
+    "prediction_alignment_passed": true,
+    "constant_baseline_auc_passed": true,
+    "point_in_time_data_guarantee": false,
+    "low_walk_forward_accuracy": false
+  }
+}
