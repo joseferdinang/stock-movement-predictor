@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Python 3.11 / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Check dependencies
+        run: python -m pip check
+      - name: Run offline tests
+        run: python -m pytest -q
+      - name: Validate saved notebook
+        run: >-
+          python -c "import nbformat; n=nbformat.read('notebooks/results.ipynb', as_version=4);
+          nbformat.validate(n); c=[x for x in n.cells if x.cell_type=='code'];
+          assert c and all(x.execution_count is not None for x in c);
+          assert not any(o.output_type=='error' for x in c for o in x.outputs)"
