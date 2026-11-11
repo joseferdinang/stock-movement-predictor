@@ -40,8 +40,9 @@ def validate_prices(
         raise ValueError("OHLCV contiene valores nulos o no finitos.")
     if (frame[OHLCV[:4]] <= 0).any().any() or (frame.Volume < 0).any():
         raise ValueError("Precios no positivos o volumen negativo.")
-    if ((frame.High < frame[["Open", "Close", "Low"]].max(axis=1))
-            | (frame.Low > frame[["Open", "Close", "High"]].min(axis=1))).any():
+    tolerance = frame[OHLCV[:4]].abs().max(axis=1) * 1e-12
+    if ((frame.High < frame[["Open", "Close", "Low"]].max(axis=1) - tolerance)
+            | (frame.Low > frame[["Open", "Close", "High"]].min(axis=1) + tolerance)).any():
         raise ValueError("Los precios OHLC son inconsistentes.")
     first, last = frame.index[0], frame.index[-1]
     start_date, end_date = pd.Timestamp(start), pd.Timestamp(end)

@@ -82,3 +82,10 @@ def test_multiindex_response(tmp_path, prices):
     with patch("src.data.yf.download", return_value=frame):
         result = load_prices("SPY", tmp_path)
     assert list(result.columns) == ["Open", "High", "Low", "Close", "Volume"]
+
+
+def test_adjusted_ohlc_roundoff_is_tolerated(prices):
+    frame = prices.copy()
+    frame.iloc[100, frame.columns.get_loc("High")] = frame.Close.iloc[100] - 1e-13
+    frame.iloc[100, frame.columns.get_loc("Open")] = frame.Close.iloc[100]
+    validate_prices(frame, START, END)
